@@ -2,5 +2,11 @@
 
 <% @lists.each do |list| %>
   <p>タイトル</p>
-  <span><%= list.title %></span>
+  <!--<span><%= list.title %></span>-->
+  <span>
+  　<!--<%= link_to list.title, "/list/#{list.id}" %>-->
+  　<!-- showアクションに名前付けルートを行ったため、上記を下記の通り編集-->
+    <%= link_to list.title, list_path(list.id) %>
+  
+  </span>
 <% end %>

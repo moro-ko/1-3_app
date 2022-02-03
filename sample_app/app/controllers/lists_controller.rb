@@ -15,7 +15,9 @@ class ListsController < ApplicationController
     list.save
     
     # 4.トップ画面へリダイレクト: redirect_to 画面遷移するためのメソッド
-    redirect_to "/top"
+    # redirect_to "/top"
+    # リダイレクト先をtopではなく、showアクションに変更
+    redirect_to list_path(list.id)
   end
 
   def index
@@ -23,6 +25,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list = List.find(params[:id])
   end
 
   def edit
