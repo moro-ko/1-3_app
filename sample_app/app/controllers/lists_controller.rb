@@ -32,11 +32,18 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
   
-  # 更新機能のためのupdateアクションを追加(editで編集機能を活用した際、showアクションにリダイレクトするよう設定)
+  # updateアクション(更新機能)を追加(editで編集機能を活用した際、showアクションにリダイレクトするよう設定)
   def update
     list = List.find(params[:id])
     list.update(list_params)
     redirect_to list_path(list.id)
+  end
+  
+  # destroyアクション(削除機能)を追加
+  def destroy
+    list = List.find(params[:id])
+    list.destroy
+    redirect_to "/lists"
   end
   
   private

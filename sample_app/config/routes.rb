@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "lists/:id/edit" => "lists#edit" ,as: "edit_list"
   # updateアクションの作成：フォームとアクションの紐付け
   patch "lists/:id" => "lists#update" ,as: "update_list"
+  # destroyアクション(削除機能)の作成
+  delete "list/:id" => "lists#destroy" ,as: "destroy_list"
   get '/top' => "homes#top"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
