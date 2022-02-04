@@ -9,15 +9,20 @@ class ListsController < ApplicationController
     # 1.&2. データを受け取り新規登録するためのインスタンス作成
     # 上記newアクションの時とは異なり、変数listの前に＠がついていない→ここではviewファイルへの受け渡しが不要なため
     # 「ローカル変数」で設定しているため
-    list = List.new(list_params)
+    # validatesを追加したことにより、インスタンス変数に編集を加える
+    @list = List.new(list_params)
     
     # 3.データをデータベースに保存するためのsaveメソッド実行
-    list.save
+    if @list.save
+      redirect_to list_path(@list.id)
+    else
+      render :new
+    end
     
     # 4.トップ画面へリダイレクト: redirect_to 画面遷移するためのメソッド
     # redirect_to "/top"
     # リダイレクト先をtopではなく、showアクションに変更
-    redirect_to list_path(list.id)
+    # redirect_to list_path(list.id)
   end
 
   def index

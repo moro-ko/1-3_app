@@ -1,5 +1,16 @@
 <h1>新規投稿</h1>
 
+<!--validatesの際のエラーメッセージ表示-->
+<!--errors:モデルにバリエーションをかけた時に発生したエラーの内容を確認できるメソッド-->
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <il><%= message %></il>
+    <% end %>
+  </ul>
+<% end %>
+
 <!-- from_with部分 -->
 <%= form_with model: @list, url: "/lists", method: :post, local: true do |f| %>
 
