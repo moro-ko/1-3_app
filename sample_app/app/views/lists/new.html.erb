@@ -3,11 +3,18 @@
 <!-- from_with部分 -->
 <%= form_with model: @list, url: "/lists", method: :post, local: true do |f| %>
 
+  <!--title用フィールド-->
   <h4>タイトル</h4>
   <%= f.text_field :title %>
   
+  <!--body用フィールド-->
   <h4>本文</h4>
   <%= f.text_area :body %>
+  
+  <!--image用フィールド-->
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+  <!--file_fieldでは画像以外の全てのファイルが投稿できるため、accept以下の記述で画像ファイルのみに範囲を制限-->
   
   <%= f.submit "投稿" %>
   

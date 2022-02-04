@@ -7,6 +7,15 @@
   　<!--<%= link_to list.title, "/list/#{list.id}" %>-->
   　<!-- showアクションに名前付けルートを行ったため、上記を下記の通り編集-->
     <%= link_to list.title, list_path(list.id) %>
-  
   </span>
+  
+  <!--HTMLのimagタグを生成するimage_tagヘルパーを使い画像の表示を行う-->
+  <!--linkに紐づいているimageをimage_tagに渡すことで画像を表示 サイズはオプションとして指定-->
+  <p>画像</p>
+  <% if list.image.attached? %>
+    <%= image_tag list.image, size: "200×200" %>
+  <% else %>
+    <%= image_tag "no_image" ,size: "200×200" %>
+  <% end %>
+  
 <% end %>
